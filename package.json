@@ -4,7 +4,7 @@
         "src/index.html"
     ],
     "scripts": {
-        "start": "parcel --https",
+        "start": "parcel --https --port 443",
         "build": "parcel build"
     },
     "devDependencies": {
