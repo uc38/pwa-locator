@@ -1,0 +1,40 @@
+div#map {
+    height: 320px;
+}
+
+dl {
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    /* set the container width*/
+    overflow: visible;
+    font-size: small;
+}
+
+dl dt {
+    flex: 0 0 45%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-align: right;
+    margin-right: 4px;
+    color: grey;
+}
+
+dl dd {
+    flex: 0 0 50%;
+    margin-left: auto;
+    text-align: left;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+input#camera {
+    content: url("camera.svg");
+    height: 24px;
+}
+
+input#camera:disabled {
+    content: url("camera.svg");
+    height: 24px;
+    filter: opacity(0.25);
+}

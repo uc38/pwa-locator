@@ -1,0 +1,16 @@
+{
+    "name": "locator",
+    "source": [
+        "src/index.html"
+    ],
+    "scripts": {
+        "start": "parcel --https",
+        "build": "parcel build"
+    },
+    "devDependencies": {
+        "parcel": "latest"
+    },
+    "dependencies": {
+        "leaflet": "^1.9.2"
+    }
+}
