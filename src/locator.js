@@ -72,4 +72,18 @@ window.onload = () => {
 
     //init footer
     updatePosition({ coords: { latitude: 47.406653, longitude: 9.744844, altitude: 440, accuracy: 40, heading: 45, speed: 1.8 } });
+
+    // setup service worker
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register(
+            new URL('serviceworker.js', import.meta.url),
+            { type: 'module' }
+        ).then(() => {
+            console.log('Service worker registered!');
+        }).catch((error) => {
+            console.warn('Error registering service worker:');
+            console.warn(error);
+        });
+    }
+
 }

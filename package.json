@@ -13,6 +13,8 @@
         "parcel": "latest"
     },
     "dependencies": {
-        "leaflet": "^1.9.4"
+        "@parcel/service-worker": "^2.10.0",
+        "leaflet": "^1.9.4",
+        "workbox-precaching": "^7.0.0"
     }
 }
