@@ -1,0 +1,91 @@
+{
+    "name": "Locator PWA",
+    "short_name": "Locator",
+    "start_url": "/?standalone=true",
+    "display": "standalone",
+    "description": "Locator allow you to store photos as markers on a street map.",
+    "lang": "English",
+    "dir": "auto",
+    "theme_color": "#000000",
+    "background_color": "#000000",
+    "orientation": "any",
+    "icons": [
+        {
+            "src": "icons/locator_512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "icons/locator_72x72.png",
+            "sizes": "72x72",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "icons/locator_96x96.png",
+            "sizes": "96x96",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "icons/locator_120x120.png",
+            "sizes": "120x120",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "icons/locator_128x128.png",
+            "sizes": "128x128",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "icons/locator_144x144.png",
+            "sizes": "144x144",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "icons/locator_152x152.png",
+            "sizes": "152x152",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "icons/locator_180x180.png",
+            "sizes": "180x180",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "icons/locator_192x192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "icons/locator_384x384.png",
+            "sizes": "384x384",
+            "type": "image/png",
+            "purpose": "any"
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "https://www.pwabuilder.com/assets/screenshots/screen1.png",
+            "sizes": "2880x1800",
+            "type": "image/png",
+            "description": "A screenshot of the home page"
+        }
+    ],
+    "related_applications": [],
+    "prefer_related_applications": false,
+    "shortcuts": [
+        {
+            "name": "street map",
+            "url": "/",
+            "description": "Locate your position on a street map and take a picture."
+        }
+    ]
+}

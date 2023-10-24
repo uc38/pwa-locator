@@ -4,13 +4,15 @@
         "src/index.html"
     ],
     "scripts": {
-        "start": "parcel --https --port 443",
+        "start": "parcel",
         "build": "parcel build"
     },
     "devDependencies": {
+        "@parcel/packager-raw-url": "^2.10.0",
+        "@parcel/transformer-webmanifest": "^2.10.0",
         "parcel": "latest"
     },
     "dependencies": {
-        "leaflet": "^1.9.2"
+        "leaflet": "^1.9.4"
     }
 }

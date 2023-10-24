@@ -3,7 +3,13 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <link rel="manifest" href="./manifest.json">
 
     <link rel="stylesheet" href="../node_modules/leaflet/dist/leaflet.css" />
     <script src="../node_modules/leaflet/dist/leaflet.js"></script>
@@ -15,12 +21,18 @@
 </head>
 
 <body>
-    <h1>Welcome to Locator</h1>
+    <!-- area used eg by iOS for status icons and the notch / dynamic island -->
+    <div class="safe-area">
+        <div class="h-safe-area-inset-top"></div>
+    </div>
 
+    <!-- full screen map -->
     <div id="map"></div>
-    <div id="location">Waiting for location service ...</div>
 
-    <div>
+    <div class="footer">
+        <div id="location">
+            Waiting for location service ...
+        </div>
         <input id="camera" type="image" disabled="disabled">
     </div>
 
