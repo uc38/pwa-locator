@@ -1,4 +1,7 @@
 import cameraImage from './camera.svg';
+import marker2x from 'leaflet/dist/images/marker-icon-2x.png';
+import marker from 'leaflet/dist/images/marker-icon.png';
+import markerShadow from 'leaflet/dist/images/marker-shadow.png';
 
 const COORD_FORMATTER = Intl.NumberFormat('de-DE', { minimumFractionDigits: 6, maximumFractionDigits: 6, minimumIntegerDigits: 3, style: 'unit', unit: 'degree' });
 const DIST_FORMATTER = Intl.NumberFormat('de-DE', { minimumFractionDigits: 1, maximumFractionDigits: 1, style: 'unit', unit: 'meter' });
@@ -10,6 +13,13 @@ const CAMERA_INPUT_ID = 'camera';
 //map state
 var map;
 var ranger;
+var positionCamera;
+
+const markerIcon = new L.Icon.Default({
+    iconUrl: marker,
+    iconRetinaUrl: marker2x,
+    shadowUrl: markerShadow
+});
 
 function isTouchDevice() {
     return (('ontouchstart' in window) ||
@@ -35,6 +45,7 @@ function updatePosition(position) {
     const locatorDiv = document.getElementById(LOCATION_ID);
 
     const coords = position.coords;
+    positionCamera = coords;
     console.debug(`got new coordinates: ${coords}`);
     locatorDiv.innerHTML = `
         <dl>
@@ -53,6 +64,7 @@ function updatePosition(position) {
         </dl>
     `;
     var ll = [coords.latitude, coords.longitude];
+    console.debug(`New coordinates: ${ll}`);
 
     map.setView(ll);
 
@@ -60,9 +72,37 @@ function updatePosition(position) {
     ranger.setRadius(coords.accuracy);
 }
 
+var geolocation;
+var watchID;
+const options = {
+    enableHighAccuracy: true,
+    maximumAge: 30000,
+    timeout: 27000
+};
+
+/*function locate(position) {
+    //the time at which the location was retrieved
+    console.debug(position.timestamp);
+
+    //the geographic position in degrees
+    const c = position.coords;
+    console.debug(
+        `my position: lat=${c.latitude} lng=${c.longitude}`);
+
+}*/
+
+function handleErr(err) {
+    console.error(err.message);
+}
+
+
 /* setup component */
 window.onload = () => {
     const cameraButton = document.getElementById(CAMERA_INPUT_ID);
+
+    cameraButton.addEventListener("click", function () {
+        location.href = `camera.html?lat=${positionCamera.latitude}&long=${positionCamera.longitude}`;
+    });
 
     //setup UI
     cameraButton.src = cameraImage;
@@ -85,5 +125,39 @@ window.onload = () => {
             console.warn(error);
         });
     }
+    if ('geolocation' in navigator) {
+        /* geolocation is available */
+        geolocation = navigator.geolocation;
+        watchID = geolocation.watchPosition(updatePosition, handleErr, options);
+    }
 
+    if (localStorage.length > 0) {
+        Object.keys(localStorage).forEach(function(key) {
+            var image = localStorage.getItem(key);
+            var position = key.split("x");
+            var marker = L.marker([position[0], position[1]], {icon: markerIcon}).addTo(map);
+
+            marker.bindPopup(
+                //`<img src=${image} width="150px"`
+                "<img src= " + image + " width= \"150px\">"
+            ).openPopup();
+        });
+
+
+    }
 }
+
+window.onbeforeunload = (event) => {
+    if (geolocation) {
+        geolocation.clearWatch(watchId);
+    }
+};
+
+
+/*document.addEventListener("DOMContentLoaded", function () {
+    const inputElement = document.getElementById("camera");
+
+    inputElement.addEventListener("click", function () {
+        location.href = "camera.html";
+    });
+});*/
