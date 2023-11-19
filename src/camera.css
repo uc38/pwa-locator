@@ -14,3 +14,28 @@ input {
 input:disabled {
     filter: opacity(0.50);
 }
+
+body {
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+}
+
+/* Optional: Stil für den Inhalt */
+.content {
+    padding: 20px;
+    border: none;
+}
+
+video {
+    width: 100%; /* Standardbreite auf 100% setzen */
+    height: auto; /* Automatische Höhe beibehalten */
+    padding-top: 20px;
+}

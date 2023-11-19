@@ -49,12 +49,24 @@ window.onload = () => {
 }
 
 function addLocationToImage(context) {
-    context.fillStyle = 'rgba(0, 255, 0, 0.5)';
-    context.beginPath();
-    context.moveTo(25, 25);
-    context.lineTo(105, 25);
-    context.lineTo(25, 105);
-    context.fill();
+     const text = "Latitude: " + latitude + ", Longitude: " + longitude;
+
+    context.font = '16px Calibri';
+    context.textAlign = 'center';
+    context.textBaseline = 'bottom';
+
+    const textMetrics = context.measureText(text);
+    const backgroundMargin = 2;
+    const backgroundWidth = textMetrics.width + 2 * backgroundMargin;
+
+    const backgroundHeight = 20;
+    context.fillStyle = 'rgba(255, 255, 255, 0.5)';
+
+    context.fillRect((width - backgroundWidth) / 2, height - backgroundHeight, backgroundWidth, backgroundHeight);
+
+    context.fillStyle = 'black';
+    context.fillText(text, width / 2, height - backgroundMargin, width);
+
 }
 
 function togglePlayPause(){
